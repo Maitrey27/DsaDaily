@@ -1,24 +1,26 @@
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        //map that will store the sorted str and all the remainig str that match the corresponding sorted str
-        unordered_map<string,vector<string>> mp;
+        vector<vector<string>>ans;
+        //mp will stoe the sorted str and all the corresposing str that matches the str
+        unordered_map<string,vector<string>>mp;
 
-        for(auto i : strs)
+        for(auto w : strs)
         {
-            string word = i;
+            string word = w;
             sort(word.begin(),word.end());
 
-            //store all the rem strs that match the sorted sts in vector<string>
-            mp[word].push_back(i);
+            mp[word].push_back(w);
         }
 
-        //now put all the vector<string> to new array
-        vector<vector<string> > ans;
-        for(auto i : mp)
+        //now put all the grouped anangram to arr
+        for(auto word: mp)
         {
-            ans.push_back(i.second);
+            ans.push_back(word.second);
         }
+
         return ans;
+
+
     }
 };
